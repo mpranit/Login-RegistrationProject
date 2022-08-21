@@ -19,16 +19,11 @@ void info::registration(int k)
 
     ofstream filout;
     filout.open("records.txt",ios::out|ios::app|ios::binary);   //function to write username and password in our file
-    if(!filout)
-    {
-        cout<<"\nCannot open file\n";
-    }
-    else
-    {
+    
         cout<<"\n";
         filout.write((char *)&obj[i],sizeof(obj[i]));
         filout.close();
-    }
+    
 
     cout<<"\n...........You are now registered.......... \n\n";
 
