@@ -7,7 +7,7 @@ struct info
     char username[1000];             // username
     char password[1000];             // passsword
     void registration(int);
-} obj[1000];
+} var[1000];
 
 void info::registration(int k)
 {
@@ -21,7 +21,7 @@ void info::registration(int k)
     filout.open("records.txt",ios::out|ios::app|ios::binary);   //function to write username and password in our file
     
         cout<<"\n";
-        filout.write((char *)&obj[i],sizeof(obj[i]));
+        filout.write((char *)&var[i],sizeof(var[i]));
         filout.close();
     
 
@@ -37,10 +37,10 @@ int main()
     cin>>numberofstudent;
     for(int i=1;i<=numberofstudent;i++){
         cout<<"\nEnter Registration Details for User "<<i <<" :: ";
-    obj[i].registration(i);
+    var[i].registration(i);
     }
 
-    info obj2;
+    info object;
 
     ifstream filein;
     filein.open("records.txt",ios::in|ios::binary);
@@ -51,11 +51,11 @@ int main()
     else
     {
         cout<<"\nRegistered Details of All Users :: \n";
-        filein.read((char *)&obj2,sizeof(obj2));     //function to read username and password in our file
+        filein.read((char *)&object,sizeof(object));     //function to read username and password in our file
         while(filein)
         {
-            cout<<"\nUsername :: "<<obj2.username<<"\nPasswword :: "<<obj2.password<<"\n";
-            filein.read((char *)&obj2,sizeof(obj2));
+            cout<<"\nUsername :: "<<object.username<<"\nPasswword :: "<<object.password<<"\n";
+            filein.read((char *)&object,sizeof(object));
         }
             filein.close();
     }
